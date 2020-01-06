@@ -4,9 +4,174 @@
     <meta charset='utf-8'>
     <meta name='author' content='avisekgupta'>
     <meta name='description' content='homepage'>
-    <title>Avisek Gupta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Avisek Gupta </title>
+
+    <style>
+        /*body {font-family: Arial;}*/
+
+        /* Style the tab */
+        .tab {
+              overflow: hidden;
+              border: 1px solid #ccc;
+              background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+              display: none;
+              padding: 6px 12px;
+              border: 1px solid #ccc;
+              border-top: none;
+              line-height: 1.8;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            line-height: 0.8;
+            float: left;
+            width: 33.33%;
+            padding: 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 </head>
 <body>
-    <h1>Avisek Gupta</h1>
+    <div class="row">
+        <div class="column">
+            <h2> Avisek Gupta </h2>
+            <p> Senior Research Fellow, Computer Science, </p>
+            <p> Indian Statistical Institute, Kolkata. </p>
+            <ul>
+            <li> <p> <a href='https://scholar.google.co.in/citations?user=mVhNXEWludgC'> Google Scholar </a> </p> </li>
+            <li> <p> Github Repository: <a href='https://github.com/Avisek20'> https://github.com/Avisek20 </a> </p> </li>
+            </ul>
+        </div>
+
+        <div class="column" style="line-height:0.6; padding-top:30px">
+            <h4> Contact Information: </h4>
+            <p> 903, Electronics and Communications Sciences Unit, </p>
+            <p> Indian Statistical Institute, </p>
+            <p> 203 B.T. Road, Kolkata 700108. </p>
+            <p> e-mail: avisek003@gmail.com </p>
+        </div>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Teaching')"  id="defaultOpen">Teaching</button>
+        <button class="tablinks" onclick="openTab(event, 'Research')">Research</button>
+        <button class="tablinks" onclick="openTab(event, 'Publications')">Publications</button>
+        <button class="tablinks" onclick="openTab(event, 'Tutorials')">Tutorials</button>
+        <button class="tablinks" onclick="openTab(event, 'Notes')">Notes</button>
+    </div>
+
+    <div id="Teaching" class="tabcontent">
+        <h2> Teaching </h2>
+
+        <h3> Teaching Assistant: </h3>
+        <ul>
+            <!--<li> 2020 January to May: Computer Vision --- M.Tech in CS, Second Year </li>-->
+            <li> 2018 July to December: <a href='http://www.bikashsantra.byethost7.com/PGDBA/indexPagePGDBA.html'> Computing for Data Sciences </a> --- PGDBA, First Year </li>
+        </ul>
+
+        <h3> Lectures / Presentations: </h3>
+        <ul>
+            <li> 2019 Nov 22: <a href='teaching/2019caiml/EnsembleLearning.html'> Ensemble Learning </a>, In A Short Course on Machine Learning for Practitioners (Nov 18 to Nov 23, 2019), Organised by Centre for Artificial Intelligence and Machine Learning (CAIML), at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2019 May 31 & Jun 04: Machine Learning Algorithms: <a href='teaching/2019sscvgip/MachineLearning1.html'> Session 1 </a>, <a href='teaching/2019sscvgip/MachineLearning2a.html'> Session 2(a) </a>, <a href='teaching/2019sscvgip/MachineLearning2b.html'> Session 2(b) </a>, In the Sixth Summer School on Computer Vision, Graphics and Image Processing (May 30 to Jul 12, 2019), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2018 Jun 12: <a href='teaching/2018sscvgip/MachineLearninginPython.html'> Machine Learning in Python: Scikit-Learn </a>, In the Fifth Summer School on Computer Vision, Graphics and Image Processing (May 31 to Jul 13, 2018), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2017 May 11: <a href='teaching/2017Graphics/opengl1.pdf'> OpenGL graphics programming </a>, a hands-on session as part of the Computer Graphics course of M.Tech Computer Science, Indian Statistical Institute. (<a href='teaching/2017Graphics/opengl.tar.gz'>class materials</a>) </li>
+
+            <li> 2017 Feb 4: <a href='teaching/2017workshopIEM/DataClusteringUsingR.pdf'> Data Clustering using R </a>, at A Workshop on Big Data and R, Organised by the Institute of Engineering and Management, Kolkata. </li>
+        </ul>
+    </div>
+
+    <div id="Research" class="tabcontent">
+        <h2> Research </h2>
+        <ul>
+            <li> Entropy c-Means Clustering (<a href='https://github.com/Avisek20/ecm'>Github</a>) </li>
+
+            <li> Estimating the number of clusters using the Last Leap and the Last Major Leap (<a href='https://github.com/Avisek20/cluster_number_estimation'>Github</a>) </li>
+
+            <li> Kernel k-Harmonic Means Clustering (<a href='https://github.com/Avisek20/kernelized_general_fuzzy_c_means'>Github</a>) </li>
+        </ul>
+    </div>
+
+    <div id="Publications" class="tabcontent">
+        <h2> Publications </h2>
+        <ul>
+            <li> Gupta A., Datta S., Das S., "Fuzzy Clustering to Identify Clusters at Different Levels of Fuzziness: An Evolutionary Multiobjective Optimization Approach", <i>IEEE Transactions on Cybernetics</i>, 2019. doi:<a href='https://doi.org/10.1109/TCYB.2019.2907002'>https://doi.org/10.1109/TCYB.2019.2907002</a> </li>
+
+            <li> Gupta A., Datta S., Das S., "Fast automatic estimation of the number of clusters from the minimum inter-center distance for k-means clustering", <i>Pattern Recognition Letters</i>, vol. 116, pp. 72-79, 2018. doi:<a href='https://doi.org/10.1016/j.patrec.2018.09.003'>https://doi.org/10.1016/j.patrec.2018.09.003</a> </li>
+
+            <li> Gupta A., Das S., "On the Unification of k-Harmonic Means and Fuzzy c-Means Clustering Problems under Kernelization", <i>in the Proceedings of the Ninth International Conference on Advances in Pattern Recognition (ICAPR-2017)</i>, pp. 386-391, 2017. doi:<a href='https://doi.org/10.1109/ICAPR.2017.8593078'>https://doi.org/10.1109/ICAPR.2017.8593078</a> </li>
+        </ul>
+    </div>
+
+    <div id="Tutorials" class="tabcontent">
+        <h2> Tutorials </h2>
+    </div>
+
+    <div id="Notes" class="tabcontent">
+        <h2> Notes </h2>
+    </div>
+
+
+    <script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+    function openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+
 </body>
 </html>
