@@ -1,0 +1,266 @@
+ <!DOCTYPE html>
+<html lang='en-US'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='author' content='avisekgupta'>
+    <meta name='description' content='homepage'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Avisek Gupta </title>
+
+    <style>
+        /*body {font-family: Arial;}*/
+
+        /* Style the tab */
+        .tab {
+              overflow: hidden;
+              border: 1px solid #ccc;
+              background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+              display: none;
+              padding: 6px 12px;
+              border: 1px solid #ccc;
+              border-top: none;
+              line-height: 1.8;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            line-height: 0.8;
+            float: left;
+            width: 33.33%;
+            padding: 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column">
+            <h2> Avisek Gupta </h2>
+            <p> Senior Research Fellow, Computer Science, </p>
+            <p> Indian Statistical Institute, Kolkata. </p>
+            <ul>
+            <li> <p> <a href='https://scholar.google.co.in/citations?user=mVhNXEWludgC'> Google Scholar </a> </p> </li>
+            <li> <p> Github Repository: <a href='https://github.com/Avisek20'> https://github.com/Avisek20 </a> </p> </li>
+            </ul>
+        </div>
+
+        <div class="column" style="line-height:0.6; padding-top:30px">
+            <h4> Contact Information: </h4>
+            <p> 903, Electronics and Communications Sciences Unit, </p>
+            <p> Indian Statistical Institute, </p>
+            <p> 203 B.T. Road, Kolkata 700108. </p>
+            <p> e-mail: avisek003@gmail.com </p>
+        </div>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Teaching')"  id="defaultOpen">Teaching</button>
+        <button class="tablinks" onclick="openTab(event, 'Research')">Research</button>
+        <button class="tablinks" onclick="openTab(event, 'Publications')">Publications</button>
+        <button class="tablinks" onclick="openTab(event, 'Tutorials')">Tutorials</button>
+        <button class="tablinks" onclick="openTab(event, 'Notes')">Notes</button>
+        <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button>
+    </div>
+
+    <div id="Teaching" class="tabcontent">
+        <h2> Teaching </h2>
+
+        <h3> Teaching Assistant: </h3>
+        <ul>
+            <li> 2020 January to May: Computer Vision --- for the M.Tech. in Computer Science course (Second Year), Indian Statistical Institute, Kolkata. </li>
+            <li> 2018 July to December: <a href='http://www.bikashsantra.byethost7.com/PGDBA/indexPagePGDBA.html'> Computing for Data Sciences </a> --- for the Post-Graduate Diploma in Business Analytics (First Year) course, Indian Statistical Institute, Kolkata. </li>
+        </ul>
+
+        <h3> Lectures / Presentations: </h3>
+        <ul>
+            <li> 2021 May 7: Hands on Deep Learning using PyTorch (Virtual), in the AICTE STTP on Big Data Analytics Using Soft Computing Tools (May 3 to May 8 2021), organised by MCKV Institute of Engineering, West Bengal, India. </li>
+            <li> 2019 Nov 22: <a href='teaching/2019caiml/EnsembleLearning.html'> Ensemble Learning </a>, In A Short Course on Machine Learning for Practitioners (Nov 18 to Nov 23, 2019), Organised by Centre for Artificial Intelligence and Machine Learning (CAIML), at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2019 May 31 & Jun 04: Machine Learning Algorithms: <a href='teaching/2019sscvgip/MachineLearning1.html'> Session 1 </a>, <a href='teaching/2019sscvgip/MachineLearning2a.html'> Session 2(a) </a>, <a href='teaching/2019sscvgip/MachineLearning2b.html'> Session 2(b) </a>, In the Sixth Summer School on Computer Vision, Graphics and Image Processing (May 30 to Jul 12, 2019), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2018 Jun 12: <a href='teaching/2018sscvgip/MachineLearninginPython.html'> Machine Learning in Python: Scikit-Learn </a>, In the Fifth Summer School on Computer Vision, Graphics and Image Processing (May 31 to Jul 13, 2018), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
+
+            <li> 2017 May 11: <a href='teaching/2017Graphics/opengl1.pdf'> OpenGL graphics programming </a>, a hands-on session as part of the Computer Graphics course of M.Tech Computer Science, Indian Statistical Institute. (<a href='teaching/2017Graphics/opengl.tar.gz'>class materials</a>) </li>
+
+            <li> 2017 Feb 4: <a href='teaching/2017workshopIEM/DataClusteringUsingR.pdf'> Data Clustering using R </a>, at A Workshop on Big Data and R, Organised by the Institute of Engineering and Management, Kolkata. </li>
+        </ul>
+    </div>
+
+    <div id="Research" class="tabcontent">
+        <h2> Research </h2>
+
+            <p style="font-size:large;"> Currently the research for my doctoral thesis focuses on <b>unsupervised methods</b> for data clustering, with a focus on <b>center-based clustering</b> methods. </p>
+
+        <ul>
+            <hr class="solid" align="left" style="width:1600px;">
+
+            <br>
+            <li> <p style="font-size:large;"> <b> Entropy c-Means Clustering </b> (<a href='https://github.com/Avisek20/ecm'>Github</a>): A multi-objective fuzzy clustering method to identify clusters at different levels of overlap. </p> </li>
+            <br>
+            <img width=1000 src="research/2019/2019-ecm.png">
+            <br>
+            <br>
+
+            <hr class="solid" align="left" style="width:1400px;">
+
+            <br>
+            <li> <p style="font-size:large;"> Estimating the number of clusters using the <b>Last Leap</b> and the <b>Last Major Leap</b> (<a href='https://github.com/Avisek20/cluster_number_estimation'>Github</a>) </p> </li>
+            <br>
+            <img width=1000 src="research/2018/ll_lml2.png">
+            <br>
+            <br>
+
+            <hr class="solid" align="left" style="width:1400px;">
+
+            <br>
+            <li> <p style="font-size:large;"> <b> Kernel k-Harmonic Means Clustering </b> (<a href='https://github.com/Avisek20/kernelized_general_fuzzy_c_means'>Github</a>): An extension of the k-Harmonic Means clustering method to incorporate the use of kernel similarities to identify clusters. </p> </li>
+            <br>
+            <img width=800 src="research/2017/2017_kkhm.png">
+            <br>
+            <br>
+
+            <hr class="solid" align="left" style="width:1400px;">
+
+        </ul>
+    </div>
+
+    <div id="Publications" class="tabcontent">
+        <h2> Publications </h2>
+        <ul>
+            <li> Gupta A., Datta S., Das S., "Fuzzy Clustering to Identify Clusters at Different Levels of Fuzziness: An Evolutionary Multiobjective Optimization Approach", <i>IEEE Transactions on Cybernetics</i>, 2019. doi:<a href='https://doi.org/10.1109/TCYB.2019.2907002'>https://doi.org/10.1109/TCYB.2019.2907002</a> </li>
+
+            <li> Gupta A., Datta S., Das S., "Fast automatic estimation of the number of clusters from the minimum inter-center distance for k-means clustering", <i>Pattern Recognition Letters</i>, vol. 116, pp. 72-79, 2018. doi:<a href='https://doi.org/10.1016/j.patrec.2018.09.003'>https://doi.org/10.1016/j.patrec.2018.09.003</a> </li>
+
+            <li> Gupta A., Das S., "On the Unification of k-Harmonic Means and Fuzzy c-Means Clustering Problems under Kernelization", <i>in the Proceedings of the Ninth International Conference on Advances in Pattern Recognition (ICAPR-2017)</i>, pp. 386-391, 2017. doi:<a href='https://doi.org/10.1109/ICAPR.2017.8593078'>https://doi.org/10.1109/ICAPR.2017.8593078</a> </li>
+        </ul>
+    </div>
+
+    <div id="Tutorials" class="tabcontent">
+        <h2> Tutorials </h2>
+        <ul>
+            <li> <p style="font-size:large;"> <a href="tutorials/python-basics/Python_Basics.html"> The basics of Python </a> </p>
+            <li> <p style="font-size:large;"> <a href="tutorials/python-basics/numpy_and_matplotlib.html"> The basics of Numpy and Matplotlib </a> </p>
+        </ul>
+    </div>
+
+    <div id="Notes" class="tabcontent">
+        <h2> Notes </h2>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+        <h2> Resources </h2>
+        <h3> Machine Learning </h3>
+        <ul>
+            <li> [Book] James G., Witten D., Hastie T., and Tibshirani R., <a href="https://faculty.marshall.usc.edu/gareth-james/ISL/">Introduction to Statistical Learning</a> </li>
+            <li> [Book] Hastie T., Tibshirani R., and Friedman J., <a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements of Statistical Learning</a> </li>
+            <li> [Book] Shalev-Shwartz S. and Ben-David S., <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/">Understanding Machine Learning: From Theory to Algorithms</a> </li>
+        </ul>
+
+        <br>
+
+        <h3> Calculus </h3>
+        <ul>
+            <li> [Book] Apostol T. M., <a href="https://www.wiley.com/en-us/Calculus%2C+Volume+1%2C+2nd+Edition-p-9781119496731">Calculus Volume 1</a> and <a href="https://www.wiley.com/en-us/Calculus%2C+Volume+2%2C+2nd+Edition-p-9781119496762">Calculus Volume 2</a> </li>
+            <li> [Book] Spivak M., <a href="https://www.maa.org/press/maa-reviews/calculus-4">Calculus</a> </li>
+            <li> [Videos] Jim Fowler's <a href="https://www.youtube.com/user/kisonecat/playlists?view=50&sort=dd&shelf_id=4">Calculus One</a> </li>
+            <li> [Videos] Jim Fowler's <a href="https://www.youtube.com/user/kisonecat/playlists?view=50&sort=dd&shelf_id=6">Caculus Two</a> </li>
+        </ul>
+
+        <br>
+
+        <h3> Linear Algebra </h3>
+        <ul>
+            <li> [Videos] Gilbert Strang's <a href="https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8">MIT 18.06 Linear Algebra</a>, and his [Book] <a href="https://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra</a> </li>
+            <li> [Book] Golub G. H. and Van Loan C. F., <a href="https://jhupbooks.press.jhu.edu/title/matrix-computations">Matrix Computations</a> </li>
+        </ul>
+
+        <br>
+
+        <h3> Probability and Statistics </h3>
+        <ul>
+            <li> [Videos] Joseph K. Bltzstein's <a href="https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo">Statistics 110</a>, as well as his [Book] <a href="https://www.crcpress.com/Introduction-to-Probability-Second-Edition/Blitzstein-Hwang/p/book/9781138369917">Introduction to Probability</a> </li>
+            <li> [Book] Abramovich F. and Ritov Y., <a href="https://www.crcpress.com/Statistical-Theory-A-Concise-Introduction/Abramovich-Ritov/p/book/9781439851845">Statistical Theory: A Concise Introduction</a> </li>
+            <li> [Book] Mukhopadhyay N., <a href="https://www.crcpress.com/Introductory-Statistical-Inference/Mukhopadhyay/p/book/9780367391157">Introductory Statistical Inference</a> </li>
+            <li> [Book] Wasserman L., <a href="https://www.stat.cmu.edu/~larry/all-of-statistics/">All of Statistics</a> </li>
+        </ul>
+
+        <br>
+
+        <h3> Optimization </h3>
+        <ul>
+            <li> [Book] Chong E. K. P. and Zak S. H., <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118033340">An Introduction to Optimizaion</a> </li>
+            <li> [Book] Boyd S. and Vandenberghe L., <a href="https://web.stanford.edu/~boyd/cvxbook/">Convex Optimization</a> </li>
+            <li> [Slides] <a href="www.ee.ucla.edu/~vandenbe/">All the courses</a> on the website of Lieven Vandenberghe </li>
+            <li> [Book] Nesterov Y., <a href="https://www.springer.com/gp/book/9783319915777"> Lectures on Convex Optimization</a> </li>
+        </ul>
+
+        <br>
+
+        <h3> Data Structures and Algorithms </h3>
+        <ul>
+            <li> [Book] Aho A. V., Ullman J. D., and Hopcroft J. D., <a href="https://www.pearson.com/store/p/data-structures-and-algorithms/P100000284286/9780201000238">Data Structures and Algorithms</a> </li>
+            <li> [Book] Kleinberg J. and Tardos E., <a href="https://www.pearson.com/us/higher-education/program/Kleinberg-Algorithm-Design/PGM319216.html">Algorithm Design</a> </li>
+        </ul>
+    </div>
+
+
+    <script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+    function openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+
+</body>
+</html>
