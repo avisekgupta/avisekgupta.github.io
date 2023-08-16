@@ -1,193 +1,329 @@
- <!DOCTYPE html>
-<html lang='en-US'>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='author' content='avisekgupta'>
-    <meta name='description' content='homepage'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Avisek Gupta </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisek Gupta</title>
+	
+	<style>
+	body {
+		margin: 0;
+		font-family: Arial, sans-serif;
+		background-color: #fbf9f9;
+		overflow-x: hidden; /* Prevents horizontal scrolling */
+	}
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px 20px;
+		position: fixed; /* Fixes the header at the top */
+		top: 0;
+		left: 0;
+		width: 98%;
+		z-index: 100; /* Ensures the header is above other content */
+	}
+	.header-left {
+		flex: 1;
+	}
+	.header h1 {
+		margin: 0;
+		font-size: 28px;
+	}
+	.header p {
+		margin: 5px 0;
+		font-size: 18px;
+		color: #666;
+	}
+	.header a {
+		margin: 5px 0;
+		font-size: 18px;
+		color: #666;
+		text-decoration: none;
+	}
+	.header-right {
+		display: flex;
+		align-items: flex-end;
+		text-align: right;
+	}
+	.header-right a {
+		color: #333;
+		text-decoration: none;
+		margin: 5px 0;
+		font-size: 18px;
+		color: #666;
+		padding: 6px;
+	}
+	.navbar {
+		background-color: #450606;
+		color: #fff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: fixed;
+		top: 110px; /* Adjust to match header height */
+		left: 0;
+		width: 100%;
+		z-index: 120; /* Ensures navbar is above other content */
+	}
+	.navbar-links {
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+	}
+	.navbar-links a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 18px;
+		margin: 0 0px;
+		padding: 12px 30px; /* Increases the padding for larger clickable area */
+		display: inline-block; /* Ensures the whole padding area is clickable */
+		transition: color 0.1s;, background-color 0.1s; /* color transition */
+		background-color: #450606;
+	}	
+	.navbar-links a:hover {
+		color: #f5b82a;
+		background-color: #591313;
+	}
+	.navbar-links a.active {
+		color: #fff;
+		background-color: #7d2323;
+	}
+	.navbar-toggle {
+		display: none;
+		flex-direction: column;
+		cursor: pointer;
+	}
+	.bar {
+		background-color: #fff;
+		height: 3px;
+		width: 25px;
+		margin: 3px 0;
+	}
+	.tabcontent a {
+		color: #000000;
+	}
+	.tabcontent a:hover {
+		color: #555555;
+	}
+	.tabcontent a:visited {
+		color: #000000;
+	}
+	.tabcontent {
+		font-size: 17px;
+		margin-top: 130px;
+		padding: 20px;
+		overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+		max-height: calc(100vh - 120px); /* Limit the height to the viewport minus header and navbar heights */
+	}
+	.tabcontent ul {
+		margin: 10px 50px;
+		padding: 0px;
+	}
+	.tabcontent ul li {
+		margin-bottom: 10px;
+	}
+	hr {
+		background: linear-gradient(to right, transparent, #333, transparent);
+		height: 2px; /* Set the desired height */
+		border: none; /* Remove the default border */
+		width: 80vw;
+		margin: 0 auto;
+		align: center;
+	}
+	.nested-list{
+		list-style: square;
+	}
+	.horizontal-list {
+		list-style: square;
+		display: flex;
+		padding: 5px;
+		flex-wrap: wrap;
+	}
+	.horizontal-list li {
+		margin-right: 30px;
+		padding: 1px;
+		white-space: nowrap;
+	}
+	/* Media query for mobile responsiveness */
+	@media screen and (max-width: 768px) {
+		.navbar-links {
+			display: none;
+		}
+		.navbar-toggle {
+			display: flex;
+		}
+		.navbar-links.active {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			background-color: #333;
+			width: 100%;
+			top: 60px;
+			left: 0;
+		}
+		.navbar-links.active a {
+			margin: 10px 20px;
+		}
+	}
+	</style>
+	
+	<script>
+	function toggleMenu() {
+		const navbarLinks = document.querySelector('.navbar-links');
+		navbarLinks.classList.toggle('active');
+	}
+	function openTab(evt, tabName) {
+		var i, tabcontent, tablinks;
 
-    <style>
-        /*body {font-family: Arial;}*/
+		// Hide all tab content sections
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
 
-        /* Style the tab */
-        .tab {
-              overflow: hidden;
-              border: 1px solid #ccc;
-              background-color: #f1f1f1;
-        }
+		// Remove "active" class from all tab buttons
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].classList.remove("active");
+		}
 
-        /* Style the buttons inside the tab */
-        .tab button {
-              background-color: inherit;
-              float: left;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              padding: 14px 16px;
-              transition: 0.3s;
-              font-size: 17px;
-        }
+		// Show the selected tab content and mark the clicked button as active
+		document.getElementById(tabName).style.display = "block";
+		evt.currentTarget.classList.add("active");
 
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-              display: none;
-              padding: 6px 12px;
-              border: 1px solid #ccc;
-              border-top: none;
-              line-height: 1.8;
-        }
-
-        /* Create three equal columns that floats next to each other */
-        .column {
-            line-height: 0.76;
-            float: left;
-            width: 33.33%;
-            padding: 15px;
-        }
-        
-        .column2 {
-            float: left;
-            width: 100%;
-            padding: 7px;
-            padding-left: 5px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
+		// Close the mobile navigation menu after clicking a tab
+		const navbarLinks = document.querySelector('.navbar-links');
+		navbarLinks.classList.remove('active');
+	}
+	document.addEventListener("DOMContentLoaded", function() {
+		document.getElementById("teachingTab").click(); // Set the default tab here
+	});
+	function preventDefaultAndOpenTab(evt, tabName) {
+		evt.preventDefault(); // Prevent the default anchor link behavior
+		openTab(evt, tabName); // Open the tab as usual
+	}
+	</script>
 </head>
 <body>
-    <div class="row">
-        <div class="column">
-            <h2> Avisek Gupta </h2>
-            <p style="font-size:115%;"> Ph.D. in Computer Science </p>
-            <p style="font-size:115%;"> Postdoctoral Fellow, TCG CREST, Kolkata. </p>
-            <div class="row">
-                <div class="column2">
-                ❖ <a href='https://scholar.google.co.in/citations?user=mVhNXEWludgC'> Google Scholar </a>
-                &ensp; &ensp; &ensp; ❖ <a href="https://www.linkedin.com/in/avisek-gupta-66956b96/">LinkedIn</a>
-                </div>
-                <div class="column2">
-                ❖ Github Repository: <a href='https://github.com/Avisek20'> https://github.com/Avisek20 </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="column" style="line-height:0.6; padding-top:30px">
-            <br>
-            <br>
-            <h4> Contact Information: </h4>
-            <p> Institute for Advancing Intelligence, </p>
-            <p> TCG Centres for Research and Education
-in Science and Technology, </p>
-            <p> Floor 1, Bengal Eco Intelligent Park, Block EM, Sector V Salt Lake, Kolkata 700091. </p>
-            <p> e-mail: <a href="mailto:avisek003@gmail.com">avisek003@gmail.com</a> </p>
+    <div class="header">
+		<div class="header-left">
+			<h1>Avisek Gupta</h1>
+			<p> Ph.D. in Computer Science </p>
+			<a href="https://www.tcgcrest.org/people/avisek-gupta/">Postdoctoral Fellow, TCG CREST, Kolkata.</a>
+		</div>
+		<div class="header-right">
+			<a href="https://orcid.org/0000-0003-3668-0047"> <img height="46" src="imgs/orcid_logo.png" alt="ORCID"> </a>
+			<a href="https://scholar.google.co.in/citations?user=mVhNXEWludgC">
+			<img height="46" src="imgs/google_scholar_logo.svg" alt="Google Scholar">
+			</a>
+            <a href="https://github.com/Avisek20">
+			<img height="46" src="imgs/github-mark.svg" alt="GitHub">
+			</a>
+            <a href="https://www.linkedin.com/in/avisek-gupta-66956b96/">
+			<img height="46" src="imgs/linkedin.png" alt="LinkedIn">
+			</a>
         </div>
     </div>
+    
+    <nav class="navbar">
+        <div class="navbar-links">
+			<a href="#teaching" id="teachingTab" class="tablinks active" onclick="preventDefaultAndOpenTab(event, 'teaching')">Teaching</a>
+            <a href="#research" id="researchTab" class="tablinks"onclick="preventDefaultAndOpenTab(event, 'research')">Research</a>
+            <a href="#publications" id="publicationsTab" class="tablinks" onclick="preventDefaultAndOpenTab(event, 'publications')">Publications</a>
+            <a href="#tutorials" id="tutorialsTab" class="tablinks" onclick="preventDefaultAndOpenTab(event, 'tutorials')">Tutorials</a>
+            <a href="#resources" id="resourcesTab" class="tablinks" onclick="preventDefaultAndOpenTab(event, 'resources')">Resources</a>
+        </div>
+        <div class="navbar-toggle" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Teaching')"  id="defaultOpen">Teaching</button>
-        <button class="tablinks" onclick="openTab(event, 'Research')">Research</button>
-        <button class="tablinks" onclick="openTab(event, 'Publications')">Publications</button>
-        <button class="tablinks" onclick="openTab(event, 'Tutorials')">Tutorials</button>
-        <!--<button class="tablinks" onclick="openTab(event, 'Notes')">Notes</button>-->
-        <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button>
-    </div>
-
-    <div id="Teaching" class="tabcontent">
-        <h2> Teaching </h2>
-        
-        <ul>
-            <li> <p style="font-size:20px"> <b> <a href="ml22.html"> Machine Learning (Ongoing) </a> </b>, August 2022 to January 2023, for the first year Ph.D. in Computer Science, Institute for Advancing Intelligence, TCG CREST, Kolkata. </p> </li> 
-        </ul>
-
-        <h3> Teaching Assistant: </h3>
-        <ul>
-            <li> 2020 January to May: Computer Vision --- for the M.Tech. in Computer Science course (Second Year), Indian Statistical Institute, Kolkata. </li>
-            <li> 2018 July to December: <a href='http://www.bikashsantra.byethost7.com/PGDBA/indexPagePGDBA.html'> Computing for Data Sciences </a> --- for the Post-Graduate Diploma in Business Analytics (First Year) course, Indian Statistical Institute, Kolkata. </li>
-        </ul>
-
-        <h3> Talks / Professional Activities: </h3>
-        <ul>
-            <li> <p style="font-size:20px"> External Advisory Committee, <b><a href="https://sites.google.com/view/wsdl2023">Winter School on Deep Learning 2023</a></b>, organized by <a href="https://www.isical.ac.in/~ecsu/?q=node/106">ECSU</a> at the Indian Statistical Institute, Kolkata. </p> </li>
-            <li> Organizing Chair for the <a href="https://sites.google.com/view/wsdl2022">Winter School on Deep Learning 2022</a>, organized by <a href="https://www.isical.ac.in/~ecsu/?q=node/106">ECSU</a> at the Indian Statistical Institute, Kolkata. </li>
-            <li> 2021 May 7: Hands on Deep Learning using PyTorch (Virtual), in the AICTE STTP on Big Data Analytics Using Soft Computing Tools (May 3 to May 8 2021), organised by MCKV Institute of Engineering, West Bengal, India. </li>
-            <li> 2019 Nov 22: <a href='teaching/2019caiml/EnsembleLearning.html'> Ensemble Learning </a>, In A Short Course on Machine Learning for Practitioners (Nov 18 to Nov 23, 2019), Organised by Centre for Artificial Intelligence and Machine Learning (CAIML), at the Indian Statistical Institute, Kolkata. </li>
-
-            <li> 2019 May 31 & Jun 04: Machine Learning Algorithms: <a href='teaching/2019sscvgip/MachineLearning1.html'> Session 1 </a>, <a href='teaching/2019sscvgip/MachineLearning2a.html'> Session 2(a) </a>, <a href='teaching/2019sscvgip/MachineLearning2b.html'> Session 2(b) </a>, In the Sixth Summer School on Computer Vision, Graphics and Image Processing (May 30 to Jul 12, 2019), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
-
-            <li> 2018 Jun 12: <a href='teaching/2018sscvgip/MachineLearninginPython.html'> Machine Learning in Python: Scikit-Learn </a>, In the Fifth Summer School on Computer Vision, Graphics and Image Processing (May 31 to Jul 13, 2018), Organised by the Electronics and Communications Sciences Unit, at the Indian Statistical Institute, Kolkata. </li>
-
-            <li> 2017 May 11: <a href='teaching/2017Graphics/opengl1.pdf'> OpenGL graphics programming </a>, a hands-on session as part of the Computer Graphics course of M.Tech Computer Science, Indian Statistical Institute. (<a href='teaching/2017Graphics/opengl.tar.gz'>class materials</a>) </li>
-
-            <li> 2017 Feb 4: <a href='teaching/2017workshopIEM/DataClusteringUsingR.pdf'> Data Clustering using R </a>, at A Workshop on Big Data and R, Organised by the Institute of Engineering and Management, Kolkata. </li>
-        </ul>
-    </div>
-
-    <div id="Research" class="tabcontent">
-        <h2> Research </h2>
-
-            <p style="font-size:large;"> My doctoral thesis <a href='http://library.isical.ac.in:8080/jspui/handle/10263/7199'>(available here)</a> focused on <b>center-based clustering</b> methods, that operate in an <b>unsupervised</b> or <b>weakly supervised</b> manner. </p>
-
-        <ul>
-            <hr class="solid" align="left" style="width:1600px;">
+    <section id="research" class="tabcontent">
+        <!-- Content for Research section -->
+		<h2>Research</h2>
+		<ul>
+			<li> <p style="font-size:large;"> My current research interests lie in <b> weakly supervised machine learning </b> approaches for efficient data aquisition and annotation, especially for <b> scientific machine learning</b>. </p>
+			<br>
+            <hr>
             <br>
-            <li> <p style="font-size:large;"> <b> Multiple Kernel Transfer Clustering </b> (<a href='https://github.com/Avisek20/mktc'>Github</a>): In the source task a multiple kernel metric is learnt under weak supervision, and transferred to the target task where a data set is clustered. </p> </li>
+			<li> <p style="font-size:large;"> My doctoral thesis <a href='http://library.isical.ac.in:8080/jspui/handle/10263/7199'>(available here)</a> focused on <b>center-based clustering</b> methods, that operate in an <b>unsupervised</b> or <b>weakly supervised</b> manner. </p> </li>			
+			<br>
+            <hr>
             <br>
-            <img width=1000 src="research/2021/2021-mktc.png">
+            <li> <p style="font-size:large;"> <b> Multiple Kernel Transfer Clustering </b> (<a href='https://github.com/Avisek20/mktc'>Github</a>): In a <i>source task</i> a multiple kernel metric is learnt under weak supervision, which is transferred to a <i>target task</i> where a data set is clustered. </p> </li>
             <br>
+            <img height=200 src="research/2021/2021-mktc.png">
             <br>
-            
-            <hr class="solid" align="left" style="width:1600px;">
-
+			<br>            
+            <hr>
             <br>
             <li> <p style="font-size:large;"> <b> Entropy c-Means Clustering </b> (<a href='https://github.com/Avisek20/ecm'>Github</a>): A multi-objective fuzzy clustering method to identify clusters at different levels of overlap. </p> </li>
             <br>
-            <img width=1000 src="research/2019/2019-ecm.png">
+            <img height=500 src="research/2019/2019-ecm.png">
             <br>
             <br>
-
-            <hr class="solid" align="left" style="width:1400px;">
-
-            <br>
-            <li> <p style="font-size:large;"> Estimating the number of clusters using the <b>Last Leap</b> and the <b>Last Major Leap</b> (<a href='https://github.com/Avisek20/cluster_number_estimation'>Github</a>) </p> </li>
-            <br>
-            <img width=1000 src="research/2018/ll_lml2.png">
-            <br>
-            <br>
-
-            <hr class="solid" align="left" style="width:1400px;">
+            <hr>
 
             <br>
-            <li> <p style="font-size:large;"> <b> Kernel k-Harmonic Means Clustering </b> (<a href='https://github.com/Avisek20/kernelized_general_fuzzy_c_means'>Github</a>): An extension of the k-Harmonic Means clustering method to incorporate the use of kernel similarities to identify clusters. </p> </li>
+            <li> <p style="font-size:large;"> The <b>Last Leap</b> and the <b>Last Major Leap</b> (<a href='https://github.com/Avisek20/cluster_number_estimation'>Github</a>): Methods to estimate the number of clusters in a data set. </p> </li>
             <br>
-            <img width=800 src="research/2017/2017_kkhm.png">
+            <img height=550 src="research/2018/ll_lml2.png">
             <br>
             <br>
-
-            <hr class="solid" align="left" style="width:1400px;">
-
+            <hr>
+            <br>
+            <li> <p style="font-size:large;"> <b> Kernel k-Harmonic Means Clustering </b> (<a href='https://github.com/Avisek20/kernelized_general_fuzzy_c_means'>Github</a>): An extension of the k-Harmonic Means method incorporating kernel similarities. </p> </li>
+            <br>
+            <img height=300 src="research/2017/2017_kkhm.png">
+            <br>
+            <br>
         </ul>
-    </div>
+    </section>
 
-    <div id="Publications" class="tabcontent">
-        <h2> Publications </h2>
+    <section id="teaching" class="tabcontent">
+        <!-- Content for Teaching section -->
+		<h2>Teaching</h2>
+		<ul>
+			<li> For first year Ph.D. in Computer Science, TCG CREST, Kolkata:
+			<ul class="nested-list">
+			<li> Course Instructor for <b> <a href="ml22.html"> Elements of Probability and Statistics (Ongoing)</a></b>, from August to December 2023. </li>
+			<li> Lectures for the course <b>Deep Learning</b> (Sequence Models), from January to June 2023. </li>
+            <li> Course Instructor for <b> <a href="ml22.html"> Machine Learning</a></b>, from August 2022 to January 2023. </li>
+			</li>
+			</ul>
+        </ul>
+		<br>
+
+        <h3> Teaching Assistant </h3>
         <ul>
+            <li> <b> Computer Vision</b>, from January to May 2020, for M.Tech. in Computer Science (Second Year), at ISI Kolkata. </li>
+            <li> <b> <a href='http://www.bikashsantra.byethost7.com/PGDBA/indexPagePGDBA.html'> Computing for Data Sciences</a></b>, from July to December 2018, for Post-Graduate Diploma in Business Analytics (First Year), at ISI Kolkata. </li>
+        </ul>
+		<br>
+
+        <h3> Talks </h3>
+        <ul>
+			<li> 2023 June 9: Deep Learning I: Understanding Convolutional Neural Networks (CNNs), for the Eighth <a href="https://mail.isical.ac.in/~ecsu/?q=node/117">SSCVIPML</a>, at ECSU, ISI Kolkata. </li>
+			<li> 2023 Jan 21: Rudiments of Artifical Neural Networks, at the 2nd <a href="https://sites.google.com/view/wsdl2023">WSDL-2023</a>, organised by ECSU, ISI Kolkata. </li>
+			<li> 2023 Jan 27: Convolutional Neural Networks, at the 2nd <a href="https://sites.google.com/view/wsdl2023">WSDL-2023</a>, organised by ECSU, ISI Kolkata. </li>
+			<li> 2022 June 13: Machine Learning under Weak Supervision for Computer Vision and Computational Chemistry problems, for the India-Serbia Workshop on Selected Topics of Artificial Intelligence and Information Technology Techniques and Applications, at the Serbian Academy of Sciences and Arts, Belgrade, Serbia.
+			</li>
+            <li> 2021 May 7: Hands on Deep Learning using PyTorch (Virtual), in Big Data Analytics Using Soft Computing Tools (May 3 to May 8 2021), organised by the MCKV Institute of Engineering, India. </li>
+            <li> 2019 Nov 22: <a href='teaching/2019caiml/EnsembleLearning.html'> Ensemble Learning </a>, in A Short Course on Machine Learning for Practitioners (Nov 18 to Nov 23, 2019), organised by CAIML, ISI Kolkata. </li>
+            <li> 2019 May 31 & Jun 04: Machine Learning Algorithms: <a href='teaching/2019sscvgip/MachineLearning1.html'> Session 1 </a>, <a href='teaching/2019sscvgip/MachineLearning2a.html'> Session 2(a) </a>, <a href='teaching/2019sscvgip/MachineLearning2b.html'> Session 2(b) </a>, in the Sixth <a href="https://mail.isical.ac.in/~ecsu/?q=node/87">SSCVGIP</a> (May 30 to Jul 12, 2019), organised by ECSU, ISI Kolkata. </li>
+            <li> 2018 Jun 12: <a href='teaching/2018sscvgip/MachineLearninginPython.html'> Machine Learning in Python: Scikit-Learn </a>, in the Fifth <a href="https://mail.isical.ac.in/~ecsu/?q=node/78">SSCVGIP</a> (May 31 to Jul 13, 2018), organised by ECSU, ISI Kolkata. </li>
+            <li> 2017 May 11: <a href='teaching/2017Graphics/opengl1.pdf'> OpenGL graphics programming </a>, for the Computer Graphics course of M.Tech in Computer Science, ISI Kolkata. (<a href='teaching/2017Graphics/opengl.tar.gz'>class materials</a>) </li>
+            <li> 2017 Feb 4: <a href='teaching/2017workshopIEM/DataClusteringUsingR.pdf'> Data Clustering using R </a>, at A Workshop on Big Data and R, organised by IEM Kolkata. </li>
+        </ul>
+    </section>
+
+    <section id="publications" class="tabcontent">
+        <!-- Content for Publications section -->
+		<h2>Publications</h2>
+		<ul>
             <li> Avisek Gupta and Swagatam Das, "Transfer Clustering Using a Multiple Kernel Metric Learned Under Multi-Instance Weak Supervision", <i>IEEE Transactions On Emerging Topics In Computational Intelligence</i>, 2021. DOI:<a href='https://doi.org/10.1109/TETCI.2021.3110526'>10.1109/TETCI.2021.3110526</a>. <a href='https://github.com/Avisek20/MKTC'>(Github)</a> </li>
             
             <li> Avisek Gupta and Swagatam Das, "Improved Efficient Model Selection for Sparse Hard and Fuzzy Center-Based Clustering", <i>Information Sciences</i>, vol. 590, pp. 29-44, 2022. DOI:<a href="https://doi.org/10.1016/j.ins.2021.12.070">10.1016/j.ins.2021.12.070</a>. <a href="https://github.com/Avisek20/sparse_clustering_BIC">(Github)</a> </li>
@@ -198,14 +334,37 @@ in Science and Technology, </p>
 
             <li> Avisek Gupta, Swagatam Das, "On the Unification of k-Harmonic Means and Fuzzy c-Means Clustering Problems under Kernelization", <i>In the Proceedings of the Ninth International Conference on Advances in Pattern Recognition (ICAPR-2017)</i>, pp. 386-391, 2017. DOI:<a href='https://doi.org/10.1109/ICAPR.2017.8593078'>10.1109/ICAPR.2017.8593078</a>. <a href='https://github.com/Avisek20/kernelized_general_fuzzy_c_means'>(Github)</a> </li>
         </ul>
-    </div>
+		
+		<br>
+		
+		<h3>Other Academic Responsibilities:</h3>
+		
+		<ul>
+			<li> <b> Program Committee Member </b>, AI IMPACT Track, The 20th Pacific Rim International Conference on Artificial Intelligence (PRICAI-2023) </li>
+			<li> <b>External Advisory Committee</b>, for the 2nd <a href="https://sites.google.com/view/wsdl2023">Winter School on Deep Learning 2023 (WSDL-2023)</a>, organized by <a href="https://www.isical.ac.in/~ecsu/?q=node/106">ECSU</a>, ISI Kolkata. </li>
+			<li> <b>Organizing Chair</b> for the 1st <a href="https://sites.google.com/view/wsdl2022">Winter School on Deep Learning 2022 (WSDL-2022)</a>, organized by <a href="https://www.isical.ac.in/~ecsu/?q=node/106">ECSU</a>, ISI Kolkata. </li>
+		</ul>
+		<br>
+		<h3> Regular Peer Reviewer for: </h3>
+		<ul class="horizontal-list">
+		<li> IEEE Transactions on Neural Networks and Learning Systems</li>
+		<li> IEEE Transactions on Cybernetics</li>
+		<li> Pattern Recognition (Elsevier) </li>
+		<li> Information Sciences (Elsevier) </li>
+		<li> Applied Soft Computing (Elsevier) </li>
+		<li> SN Computer Science (Springer) </li>
+		<li> Engineering Applications of Artificial Intelligence (Elsevier) </li>
+		<li> Pattern Analysis and Applications (Springer) </li>
+		</ul>		
+    </section>
 
-    <div id="Tutorials" class="tabcontent">
-        <h2> Tutorials </h2>
-        <ul>
+    <section id="tutorials" class="tabcontent">
+        <!-- Content for Tutorials section -->
+		<h2>Tutorials</h2>
+		<ul>
             <li> <p style="font-size:large;"> <a href="tutorials/python-basics/Python_Basics.html"> The basics of Python </a> </p> </li>
             <li> <p style="font-size:large;"> <a href="tutorials/python-basics/numpy_and_matplotlib.html"> The basics of Numpy and Matplotlib </a> </p> </li>
-            <li> <p style="font-size:large;"> PyTorch:
+            <li> <p style="font-size:large;"> Elementary PyTorch:
             <ol>
             <li> <a href="tutorials/pytorch-basics/pytorch_tutorial_1.html"> Working with Tensors in PyTorch </a> </p> </li>
             <li> <a href="tutorials/pytorch-basics/pytorch_tutorial_2.html"> Tensor Gradients and Optimization </a> </p> </li>
@@ -214,21 +373,18 @@ in Science and Technology, </p>
             </ol>
             </li>
         </ul>
-    </div>
+    </section>
 
-    <!--
-    <div id="Notes" class="tabcontent">
-        <h2> Notes </h2>
-    </div>
-    -->
-
-    <div id="Resources" class="tabcontent">
-        <h2> Resources </h2>
-        <h3> Machine Learning </h3>
+    <section id="resources" class="tabcontent">
+        <!-- Content for Resources section -->
+		<h2>Resources</h2>
+		<h3> Machine Learning & Deep Learning </h3>
         <ul>
-            <li> [Book] James G., Witten D., Hastie T., and Tibshirani R., <a href="https://faculty.marshall.usc.edu/gareth-james/ISL/">Introduction to Statistical Learning</a> </li>
-            <li> [Book] Hastie T., Tibshirani R., and Friedman J., <a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements of Statistical Learning</a> </li>
-            <li> [Book] Shalev-Shwartz S. and Ben-David S., <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/">Understanding Machine Learning: From Theory to Algorithms</a> </li>
+			<li> [Book] Zhang A., Lipton Z. C., Li M., and Smola A. J., <a href="https://d2l.ai/">Dive Into Deep Learning</a>. </li>
+			<li> [Book] Bishop C. M. <a href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf"> Pattern Recognition and Machine Learning</a>. </li>
+            <li> [Book] Murphy K. P., <a href="https://probml.github.io/pml-book/book0.html"> Machine Learning: a Probabilistic Perspective</a>. </li>
+            <li> [Book & Videos] Shalev-Shwartz S. and Ben-David S., <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/">Understanding Machine Learning: From Theory to Algorithms</a>. Youtube playlist: <a href="https://www.youtube.com/playlist?list=PLFze15KrfxbH8SE4FgOHpMSY1h5HiRLMm">link</a>. </li>
+			<li> [Book] James G., Witten D., Hastie T., and Tibshirani R., <a href="https://www.statlearning.com/">Introduction to Statistical Learning</a>. </li>
         </ul>
 
         <br>
@@ -245,7 +401,7 @@ in Science and Technology, </p>
 
         <h3> Linear Algebra </h3>
         <ul>
-            <li> [Videos] Gilbert Strang's <a href="https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8">MIT 18.06 Linear Algebra</a>, and his [Book] <a href="https://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra</a> </li>
+            <li> [Book & Videos] Strang G., <a href="https://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra</a>. Youtube playlist: <a href="https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8">link</a>. </li>
             <li> [Book] Golub G. H. and Van Loan C. F., <a href="https://jhupbooks.press.jhu.edu/title/matrix-computations">Matrix Computations</a> </li>
         </ul>
 
@@ -253,7 +409,7 @@ in Science and Technology, </p>
 
         <h3> Probability and Statistics </h3>
         <ul>
-            <li> [Videos] Joseph K. Bltzstein's <a href="https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo">Statistics 110</a>, as well as his [Book] <a href="https://www.crcpress.com/Introduction-to-Probability-Second-Edition/Blitzstein-Hwang/p/book/9781138369917">Introduction to Probability</a> </li>
+            <li> [Book & Videos] Blitzstein J. K. and Hwang J,. <a href="https://www.crcpress.com/Introduction-to-Probability-Second-Edition/Blitzstein-Hwang/p/book/9781138369917">Introduction to Probability</a>. Youtube playlist: <a href="https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo">Statistics 110</a>. </li>
             <li> [Book] Abramovich F. and Ritov Y., <a href="https://www.crcpress.com/Statistical-Theory-A-Concise-Introduction/Abramovich-Ritov/p/book/9781439851845">Statistical Theory: A Concise Introduction</a> </li>
             <li> [Book] Mukhopadhyay N., <a href="https://www.crcpress.com/Introductory-Statistical-Inference/Mukhopadhyay/p/book/9780367391157">Introductory Statistical Inference</a> </li>
             <li> [Book] Wasserman L., <a href="https://www.stat.cmu.edu/~larry/all-of-statistics/">All of Statistics</a> </li>
@@ -265,45 +421,18 @@ in Science and Technology, </p>
         <ul>
             <li> [Book] Chong E. K. P. and Zak S. H., <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118033340">An Introduction to Optimizaion</a> </li>
             <li> [Book] Boyd S. and Vandenberghe L., <a href="https://web.stanford.edu/~boyd/cvxbook/">Convex Optimization</a> </li>
-            <li> [Slides] <a href="www.ee.ucla.edu/~vandenbe/">All the courses</a> on the website of Lieven Vandenberghe </li>
+            <li> [Slides] <a href="https://www.seas.ucla.edu/~vandenbe/index.html">Courses</a> by Lieven Vandenberghe </li>
             <li> [Book] Nesterov Y., <a href="https://www.springer.com/gp/book/9783319915777"> Lectures on Convex Optimization</a> </li>
         </ul>
-
         <br>
 
         <h3> Data Structures and Algorithms </h3>
         <ul>
+			<li> [Book] Kleinberg J. and Tardos E., <a href="https://www.pearson.com/us/higher-education/program/Kleinberg-Algorithm-Design/PGM319216.html">Algorithm Design</a> </li>
+			<li> [Book] Cormen T. H., Leiserson C. E., Rivest R. L., and Stein C., <a href="https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/">Introduction to Algorithms</a>. </li>
             <li> [Book] Aho A. V., Ullman J. D., and Hopcroft J. D., <a href="https://www.pearson.com/store/p/data-structures-and-algorithms/P100000284286/9780201000238">Data Structures and Algorithms</a> </li>
-            <li> [Book] Kleinberg J. and Tardos E., <a href="https://www.pearson.com/us/higher-education/program/Kleinberg-Algorithm-Design/PGM319216.html">Algorithm Design</a> </li>
         </ul>
-    </div>
-
-
-    <script>
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-    function openTab(evt, tabName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    </script>
+    </section>
 
 </body>
 </html>
